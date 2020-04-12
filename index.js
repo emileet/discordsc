@@ -3,13 +3,13 @@ require( 'dotenv' ).config();
 const fs = require( 'fs' );
 const request = require( 'request' );
 
-const run_emileet = () => {
+const run_discordsc = () => {
     let status_index = 0;
-    let data = { embot: [], emileet: [], roles: [] };
+    let data = { statuses: [], roles: [] };
 
     setInterval( () => {
         data = JSON.parse( fs.readFileSync( './data/presence.json' ) );
-        if ( status_index >= data.emileet.length ) status_index = 0;
+        if ( status_index >= data.statuses.length ) status_index = 0;
 
         let options = {
             method: 'PATCH',
@@ -20,7 +20,7 @@ const run_emileet = () => {
             },
             body: JSON.stringify( {
                 "custom_status": {
-                    "text": data.emileet[ status_index ],
+                    "text": data.statuses[ status_index ],
                     "emoji_id": data.emojis[ status_index ].emoji_id,
                     "emoji_name": data.emojis[ status_index++ ].emoji_name,
                     "expires_at": null
@@ -32,4 +32,4 @@ const run_emileet = () => {
     }, 15000 );
 };
 
-run_emileet();
+run_discordsc();
