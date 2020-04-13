@@ -5,7 +5,7 @@ const request = require( 'request' );
 
 const run_discordsc = () => {
     let status_index = 0;
-    let data = { statuses: [], roles: [] };
+    let data = { statuses: [] };
 
     setInterval( () => {
         data = JSON.parse( fs.readFileSync( './data/presence.json' ) );
