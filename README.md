@@ -16,7 +16,7 @@ copy `example.env` to `.env` and specify your discord auth token
 TOKEN=mfa.xxx
 ```
 
-configure `data/presence.json` with your desired statuses
+copy `example.json` to `presence.json` and configure it with your desired statuses
 ```json
 {
     "statuses": [
