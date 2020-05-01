@@ -1,24 +1,24 @@
 {
-  "name": "discordsc",
-  "version": "1.0.0",
-  "description": "a simple nodejs app to automatically cycle through predefined custom statuses",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://git.plsnobully.me/emileet/discordsc.git"
-  },
-  "keywords": [
-    "discord",
-    "status",
-    "changer"
-  ],
-  "author": "emileet",
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "request": "^2.88.2"
-  }
+    "name": "discordsc",
+    "version": "1.0.0",
+    "description": "a simple nodejs app to automatically cycle through predefined custom statuses",
+    "main": "index.js",
+    "scripts": {
+        "app": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://git.plsnobully.me/emileet/discordsc.git"
+    },
+    "keywords": [
+        "discord",
+        "status",
+        "changer"
+    ],
+    "author": "emileet",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "request": "^2.88.2"
+    }
 }

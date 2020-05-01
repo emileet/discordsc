@@ -38,5 +38,5 @@ copy `example.json` to `presence.json` and configure it with your desired status
 
 now run discordsc with
 ```shell
-node index.js
+npm run app
 ```
