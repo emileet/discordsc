@@ -4,8 +4,8 @@
 # install required packages
 apk add --no-cache npm nodejs
 
-cd /discordsc
+cd /app
 
 # reinstall modules and run
-rm -r node_modules && npm i
+rm -rf node_modules && npm i
 npm run app

@@ -1,17 +1,22 @@
 require( 'dotenv' ).config();
 
-const fs = require( 'fs' );
 const request = require( 'request' );
+const fs = require( 'fs' );
 
 const run_discordsc = () => {
-    let status_index = 0;
-    let data = { statuses: [] };
+    if ( !fs.existsSync( './data/presence.json' ) ) return console.log( `error: 'data/presence.json' doesn't exist!` );
 
-    setInterval( () => {
-        data = JSON.parse( fs.readFileSync( './data/presence.json' ) );
+    const promised_request = options => new Promise( resolve => {
+        request( options, response => resolve( response ) );
+    } );
+
+    let status_index = 0;
+
+    setInterval( async () => {
+        const data = JSON.parse( fs.readFileSync( './data/presence.json' ) );
         if ( status_index >= data.statuses.length ) status_index = 0;
 
-        let options = {
+        const options = {
             method: 'PATCH',
             url: 'https://discordapp.com/api/v6/users/@me/settings',
             headers: {
@@ -28,7 +33,7 @@ const run_discordsc = () => {
             } )
         };
 
-        request( options, function ( error, response, body ) { } );
+        await promised_request( options );
     }, 15000 );
 };
 
