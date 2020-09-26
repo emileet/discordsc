@@ -19,6 +19,6 @@
     "license": "MIT",
     "dependencies": {
         "dotenv": "^8.2.0",
-        "request": "^2.88.2"
+        "gaxios": "^3.2.0"
     }
 }

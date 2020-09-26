@@ -1,13 +1,14 @@
-FROM alpine:latest
+FROM node:latest
 MAINTAINER Emily Maré (emileet) <emileet@plsnobully.me>
 
-RUN apk add --no-cache npm nodejs && \
-    mkdir -p /app/data
+WORKDIR /app
 
-COPY alpine.sh index.js package.json /app
-COPY data/presence.json /app/data
+COPY data/presence.json /app/data/
+COPY index.js package.json /app
+
+RUN npm install
 
 ENV TOKEN=VALUE
 
 VOLUME ["/app/data"]
-CMD ["/bin/sh", "/app/alpine.sh"]
+CMD ["index.js"]

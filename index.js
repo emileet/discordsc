@@ -1,14 +1,10 @@
 require( 'dotenv' ).config();
 
-const request = require( 'request' );
+const { request } = require( 'gaxios' );
 const fs = require( 'fs' );
 
 const run_discordsc = () => {
     if ( !fs.existsSync( './data/presence.json' ) ) return console.log( `error: 'data/presence.json' doesn't exist!` );
-
-    const promised_request = options => new Promise( resolve => {
-        request( options, response => resolve( response ) );
-    } );
 
     let status_index = 0;
 
@@ -17,13 +13,13 @@ const run_discordsc = () => {
         if ( status_index >= data.statuses.length ) status_index = 0;
 
         const options = {
-            method: 'PATCH',
             url: 'https://discordapp.com/api/v6/users/@me/settings',
+            method: 'PATCH',
             headers: {
                 'Authorization': process.env.TOKEN,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify( {
+            data: JSON.stringify( {
                 "custom_status": {
                     "text": data.statuses[ status_index ],
                     "emoji_id": data.emojis[ status_index ].emoji_id,
@@ -33,7 +29,7 @@ const run_discordsc = () => {
             } )
         };
 
-        await promised_request( options );
+        await request( options );
     }, 15000 );
 };
 

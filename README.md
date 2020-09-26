@@ -7,7 +7,6 @@ discord status changer - a simple nodejs app to automatically cycle through pred
 clone this repo and then install it's dependencies
 
 ```shell
-cd discordsc
 npm install
 ```
 
@@ -36,17 +35,16 @@ copy `example.json` to `presence.json` and configure it with your desired status
 }
 ```
 
-now run discordsc with
+now run the application
 ```shell
 npm run app
 ```
 
 ## docker
 
-clone this repo and then build a docker image (ensure `data/presence.json` exists)
+clone this repo and then build an image (ensure `data/presence.json` exists)
 
 ```shell
-cd discordsc
 docker build -t emileet/discordsc .
 ```
 
@@ -54,7 +52,7 @@ now spin up a container
 ```shell
 docker run --detach \
   -e TOKEN=mfa.xxx \
-  -v /mnt/container/discordsc/data:/app/data \
+  -v /host/data:/app/data \
   --name discordsc \
   emileet/discordsc:latest
 ```
