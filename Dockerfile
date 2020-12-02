@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:alpine
 MAINTAINER Emily Maré (emileet) <emileet@plsnobully.me>
 
 WORKDIR /app
